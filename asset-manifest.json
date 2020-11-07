@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.js": "/getflix/static/js/main.d821bbcb.chunk.js",
+    "main.js.map": "/getflix/static/js/main.d821bbcb.chunk.js.map",
+    "runtime-main.js": "/getflix/static/js/runtime-main.156e719a.js",
+    "runtime-main.js.map": "/getflix/static/js/runtime-main.156e719a.js.map",
+    "static/js/2.031b868a.chunk.js": "/getflix/static/js/2.031b868a.chunk.js",
+    "static/js/2.031b868a.chunk.js.map": "/getflix/static/js/2.031b868a.chunk.js.map",
+    "index.html": "/getflix/index.html",
+    "static/js/2.031b868a.chunk.js.LICENSE.txt": "/getflix/static/js/2.031b868a.chunk.js.LICENSE.txt",
+    "static/media/noPosterSmall.png": "/getflix/static/media/noPosterSmall.ea2ad102.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.156e719a.js",
+    "static/js/2.031b868a.chunk.js",
+    "static/js/main.d821bbcb.chunk.js"
+  ]
+}
