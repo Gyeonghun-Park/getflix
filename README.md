@@ -2,12 +2,16 @@
 
 Learning React and ES6 by building a Movie Discovery App.
 
+## Try it!!
+
+https://Gyeonghun-Park.github.io/getflix
+
 ## Screens
 
-- [ ] Home
-- [ ] TV Shows
-- [ ] Search
-- [ ] Detail
+- [x] Home
+- [x] TV Shows
+- [x] Search
+- [x] Detail
 
 ## API Verbs
 
