@@ -1,8 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { faImdb, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import Helmet from "react-helmet";
 import Loader from "Components/Loader";
+import Link from "Components/Link";
+import MinPoster from "Components/MinPoster";
+import Section from "Components/Section";
+
 const Container = styled.div`
   height: calc(100vh - 50px);
   width: 100%;
@@ -29,21 +34,21 @@ const Content = styled.div`
   width: 100%;
   position: relative;
   z-index: 1;
-  height: 100%;
+  padding-bottom: 50px;
 `;
 
 const Cover = styled.div`
+  height: 85vh;
   width: 30%;
   background-image: url(${(props) => props.bgImage});
   background-position: center center;
   background-size: cover;
-  height: 100%;
   border-radius: 5px;
 `;
 
 const Data = styled.div`
   padding: 20px;
-  width: 50%;
+  width: 60%;
   margin-left: 50px;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.4);
@@ -70,6 +75,19 @@ const Overview = styled.p`
   color: #d4d4d4;
   width: 90%;
   line-height: 1.5;
+`;
+
+const DataName = styled.div`
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: white;
+  opacity: 0.8;
+  font-weight: 800;
+`;
+
+const Seasons = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 
 const DetailPresenter = ({ result, loading, error }) =>
@@ -126,6 +144,66 @@ const DetailPresenter = ({ result, loading, error }) =>
             </Item>
           </ItemContainer>
           <Overview>{result.overview}</Overview>
+          {result.imdb_id ? (
+            <>
+              <DataName>Links</DataName>
+              <Link
+                text={"IMDB Page"}
+                icon={faImdb}
+                url={`https://www.imdb.com/title/${result.imdb_id}`}
+              ></Link>
+            </>
+          ) : null}
+          {result.videos.results?.length > 0 ? (
+            <>
+              <DataName>Videos</DataName>
+              {result.videos.results.map((video) => (
+                <Link
+                  text={video.name}
+                  key={video.id}
+                  icon={faYoutube}
+                  url={`https://www.youtube.com/watch?v=${video.key}`}
+                />
+              ))}
+            </>
+          ) : null}
+          {result.production_companies?.length > 0 ? (
+            <>
+              <DataName>Production Companies</DataName>
+              {result.production_companies.map((compnay, index) =>
+                index === result.production_companies.length - 1 ? (
+                  <span>{compnay.name}</span>
+                ) : (
+                  <span>{compnay.name} / </span>
+                )
+              )}
+            </>
+          ) : null}
+          {result.production_countries?.length > 0 ? (
+            <>
+              <DataName>Production Countries</DataName>
+              {result.production_countries.map((country, index) =>
+                index === result.production_countries.length - 1 ? (
+                  <span>{country.name}</span>
+                ) : (
+                  <span>{country.name} / </span>
+                )
+              )}
+            </>
+          ) : null}
+          {result.seasons?.length > 0 ? (
+            <>
+              <DataName>Seasons</DataName>
+              <Section>
+                {result.seasons.map((season) => (
+                  <MinPoster
+                    imageUrl={season.poster_path}
+                    title={season.name}
+                  ></MinPoster>
+                ))}
+              </Section>
+            </>
+          ) : null}
         </Data>
       </Content>
     </Container>
